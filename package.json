@@ -1,0 +1,45 @@
+{
+  "name": "coronavirus-tracker",
+  "version": "1.0.0",
+  "description": "This app provides coronavirus information in the U.S by state.",
+  "main": "index.js",
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wpiao/coronavirus-tracker.git"
+  },
+  "keywords": [
+    "React",
+    "Express",
+    "Full-Stack",
+    "MySQL"
+  ],
+  "author": "Wenhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wpiao/coronavirus-tracker/issues"
+  },
+  "homepage": "https://github.com/wpiao/coronavirus-tracker#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "datamaps": "^0.5.9",
+    "express": "^4.16.4",
+    "jquery": "^3.4.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "request": "^2.87.0",
+    "underscore": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "nodemon": "^1.18.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
