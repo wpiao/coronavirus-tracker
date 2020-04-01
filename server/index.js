@@ -11,19 +11,22 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 // get coronavirus confirmed case data from https://api.covid19api.com/live/country/us/status/confirmed/date/2020-03-21T13:13:30Z
 app.get('/api/data', (req, res) => {
   // format date in right format for api endpoint. Example: 2020-03-31T04:40:36Z
-  let date = new Date().toISOString();
+  const today = new Date();
+  const yesterday = today;
+  yesterday.setDate(today.getDate() - 1);
+  let date = yesterday.toISOString();
   date = date.slice(0, 11) + '00:00:00Z';
-  // get data for confirmed case after requested datetime
+  // get data for confirmed case for recent two days
   axios.get(`https://api.covid19api.com/live/country/us/status/confirmed/date/${date}`)
     .then((response) => {
       // filter data to only get most recent data
       const latestUpdateTime = response.data[response.data.length - 1].Date;
       processData(response.data, latestUpdateTime);
-      // get data for deaths cases after requested datetime
+      // get data for deaths cases for recent two days
       axios.get(`https://api.covid19api.com/live/country/us/status/deaths/date/${date}`)
         .then((response) => {
           processData1(response.data, latestUpdateTime);
-          // get data for recoved cases after requested datetime
+          // get data for recoved cases for recent two days
           axios.get(`https://api.covid19api.com/live/country/us/status/recovered/date/${date}`)
             .then((response) => {
               processData1(response.data, latestUpdateTime);
