@@ -120,3 +120,28 @@ button {
   white-space: nowrap;
   border-bottom: 1px solid #d0d0d0;
 }
+
+.total {
+  padding: 16px;
+  display: flex;
+  border: 1px solid #d0d0d0;
+  margin-left: 28px;
+  margin-right: 28px;
+  text-align: center;
+}
+
+.total-child {
+  width: 100%;
+  align-self: stretch;
+}
+
+.total-label {
+  color: #666;
+  text-align: center;
+  font-size: 13px;
+}
+
+.total-number {
+  margin-top: 5px;
+  font-size: 18px;
+}

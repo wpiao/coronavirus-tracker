@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Total from './Total.jsx';
 
 import Datamap from 'datamaps';
 import mapConfig from '../map.config.js';
@@ -24,10 +25,11 @@ class Map extends React.Component {
   }
 
   render() {
-    const { dateTime } = this.props;
+    const { dateTime, confirmed, deaths } = this.props;
     return (
       <div>
         <center><h2>Coronavirus Info by State as of {dateTime}</h2></center>
+        <Total confirmed={confirmed} deaths={deaths} />
         <div className="map" ref={this.myRef}></div>
       </div>
     );

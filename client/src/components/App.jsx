@@ -12,9 +12,11 @@ class App extends Component {
       data: {},
       mapData: {},
       renderMap: false,
-      dateTime: ''
+      dateTime: '',
+      confirmed: '-',
+      deaths: '_',
+      recovered: '_'
     };
-    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -31,23 +33,37 @@ class App extends Component {
     axios.get('/api/data')
       .then((response) => {
         const dateTime = response.data.date;
+
+
         // transform data for Map component
         const mapData = {};
         Object.keys(response.data).sort().map((state) => {
           mapData[response.data[state].abbr] = response.data[state];
         });
         delete mapData.undefined;
-        // console.log('mapDate: ', mapData)
+
+
+        // calculate total confirmed and deaths case
+        let totalConfirmed = 0;
+        let totalDeaths = 0;
+        for (let key in mapData) {
+          totalConfirmed += mapData[key].confirmed;
+          totalDeaths += mapData[key].deaths;
+        }
+
 
         // transform data for List component
         const listData = response.data;
         delete listData.date;
-        // console.log('listData: ', listData);
 
+
+        // set the state with new data
         this.setState({
           dateTime: dateTime,
           data: listData,
-          mapData: mapData
+          mapData: mapData,
+          confirmed: totalConfirmed,
+          deaths: totalDeaths
         })
       })
       .catch((err) => {
@@ -56,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-    const { view, data, dateTime, mapData} = this.state;
+    const { view, data, dateTime, mapData, confirmed, deaths} = this.state;
     return (
       <div>
         <div className="nav">
@@ -82,8 +98,8 @@ class App extends Component {
 
         <div className="main">
           {view === 'list'
-            ? <List data={data} dateTime={dateTime} />
-            : <Map finalData={colorScaleData(mapData)} dateTime={dateTime} />
+            ? <List data={data} dateTime={dateTime} confirmed={confirmed} deaths={deaths} />
+            : <Map finalData={colorScaleData(mapData)} dateTime={dateTime} confirmed={confirmed} deaths={deaths} />
           }
         </div>
       </div>
