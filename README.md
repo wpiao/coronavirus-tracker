@@ -5,4 +5,4 @@ This app provides coronavirus information in the U.S by state. It retrieve the d
 1. Run 'npm install' commad to install all required dependencies.
 2. Run 'npm run react-dev' command to create bundle.js.
 3. Run 'npm run start' command to run the server.
-4. The app is up on running. Go to 'http://localhost:4001/' to enjoy app.
+4. The app is up on running. Go to 'http://localhost:3000/' to enjoy app.

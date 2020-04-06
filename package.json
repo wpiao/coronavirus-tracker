@@ -4,7 +4,7 @@
   "description": "This app provides coronavirus information in the U.S by state.",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -p",
     "start": "nodemon server/index.js"
   },
   "repository": {
