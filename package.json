@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/wpiao/coronavirus-tracker#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "datamaps": "^0.5.9",
     "express": "^4.16.4",
     "jquery": "^3.4.1",
